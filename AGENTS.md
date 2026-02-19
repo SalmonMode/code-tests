@@ -21,3 +21,9 @@
 - When asked to scan snapshots, inspect all files under `inventory-reconciliation/data/`.
 - In assistant findings, include precise evidence (file paths and line numbers when available).
 - Flag potential reconciliation blockers explicitly (for example: schema drift, key formatting issues, duplicates, invalid quantities, date inconsistencies, whitespace anomalies).
+
+## Test Documentation Standard
+- Tests should include brief, intent-focused documentation so readers can quickly understand purpose and coverage.
+- Add a short module-level docstring in each test file that explains what behavior area it covers.
+- Add concise docstrings on each test function describing what is being validated and why it matters.
+- When fixtures or input rows are non-obvious, include short inline comments for context.
