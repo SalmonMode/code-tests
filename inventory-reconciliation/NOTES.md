@@ -101,3 +101,13 @@ Instructed agent to compile proper report/output for reconcilliation according t
 - Quality issues recorded in the report (and required by README):
   - `12` row-level quality issues were found (whitespace, SKU normalization, decimal quantity formatting, non-ISO date format, negative quantity).
   - `0` file-level issues for the current snapshots under this parser.
+
+### [Codex] How to run reconciliation
+- Run from inside `inventory-reconciliation/` (the script defaults use relative `data/...` paths).
+- Generate the default report:
+  - `cd inventory-reconciliation`
+  - `.venv/bin/python reconcile.py`
+- Run with a different key strategy:
+  - `.venv/bin/python reconcile.py --key-strategy name_warehouse --output output/reconciliation_report_name_warehouse.json`
+- Run tests:
+  - `.venv/bin/pytest -q`
