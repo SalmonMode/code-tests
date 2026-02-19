@@ -81,3 +81,23 @@ I'm having the agent pull out the reconcilliation logic into a utility, and buil
 ## User Notes
 
 Instructed the agent to have name/sku and warehouse be the key for increased granularity.
+
+## User Notes
+
+Instructed agent to compile proper report/output for reconcilliation according to README.
+
+
+### [Codex] Reconciliation runner + reporting updates
+- Added assignment-level runner script: `inventory-reconciliation/reconcile.py`.
+- Added explicit reconciliation sections in output:
+  - `in_both_changed`
+  - `in_both_unchanged`
+  - `only_in_snapshot_1`
+  - `only_in_snapshot_2`
+- Deterministic merge rule (documented and implemented):
+  - If multiple rows map to the same reconciliation key within one snapshot, quantities are merged by **addition**.
+  - This rule is included in report metadata (`deterministic_merge_rule`).
+- Generated report: `inventory-reconciliation/output/reconciliation_report.json` using key strategy `sku_warehouse`.
+- Quality issues recorded in the report (and required by README):
+  - `12` row-level quality issues were found (whitespace, SKU normalization, decimal quantity formatting, non-ISO date format, negative quantity).
+  - `0` file-level issues for the current snapshots under this parser.

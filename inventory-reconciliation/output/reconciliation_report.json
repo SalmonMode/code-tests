@@ -1,0 +1,725 @@
+{
+  "data_quality_issues": {
+    "duplicate_keys_merged_by_addition": {
+      "snapshot_1": [],
+      "snapshot_2": []
+    },
+    "file_issues": [],
+    "row_issues": [
+      {
+        "issue": {
+          "code": "whitespace_trimmed",
+          "field": "name",
+          "message": "name had leading/trailing whitespace"
+        },
+        "key_fields": {
+          "location": "Warehouse C",
+          "name": "Cable Ties 100pk",
+          "sku": "SKU-035"
+        },
+        "snapshot": "snapshot_1",
+        "source_file": "data/snapshot_1.csv",
+        "source_row": 36
+      },
+      {
+        "issue": {
+          "code": "whitespace_trimmed",
+          "field": "name",
+          "message": "name had leading/trailing whitespace"
+        },
+        "key_fields": {
+          "location": "Warehouse C",
+          "name": "Compressed Air Can",
+          "sku": "SKU-052"
+        },
+        "snapshot": "snapshot_1",
+        "source_file": "data/snapshot_1.csv",
+        "source_row": 53
+      },
+      {
+        "issue": {
+          "code": "whitespace_trimmed",
+          "field": "name",
+          "message": "name had leading/trailing whitespace"
+        },
+        "key_fields": {
+          "location": "Warehouse A",
+          "name": "Widget B",
+          "sku": "SKU-002"
+        },
+        "snapshot": "snapshot_2",
+        "source_file": "data/snapshot_2.csv",
+        "source_row": 3
+      },
+      {
+        "issue": {
+          "code": "decimal_quantity_format",
+          "field": "quantity",
+          "message": "Quantity uses decimal formatting: 70.0"
+        },
+        "key_fields": {
+          "location": "Warehouse A",
+          "name": "Widget B",
+          "sku": "SKU-002"
+        },
+        "snapshot": "snapshot_2",
+        "source_file": "data/snapshot_2.csv",
+        "source_row": 3
+      },
+      {
+        "issue": {
+          "code": "sku_format_normalized",
+          "field": "sku",
+          "message": "SKU missing hyphen was normalized"
+        },
+        "key_fields": {
+          "location": "Warehouse C",
+          "name": "Connector Cable 6ft",
+          "sku": "SKU-005"
+        },
+        "snapshot": "snapshot_2",
+        "source_file": "data/snapshot_2.csv",
+        "source_row": 6
+      },
+      {
+        "issue": {
+          "code": "decimal_quantity_format",
+          "field": "quantity",
+          "message": "Quantity uses decimal formatting: 80.00"
+        },
+        "key_fields": {
+          "location": "Warehouse A",
+          "name": "Power Supply Unit",
+          "sku": "SKU-007"
+        },
+        "snapshot": "snapshot_2",
+        "source_file": "data/snapshot_2.csv",
+        "source_row": 8
+      },
+      {
+        "issue": {
+          "code": "sku_format_normalized",
+          "field": "sku",
+          "message": "SKU casing/spacing was normalized"
+        },
+        "key_fields": {
+          "location": "Warehouse A",
+          "name": "Power Supply Unit Pro",
+          "sku": "SKU-008"
+        },
+        "snapshot": "snapshot_2",
+        "source_file": "data/snapshot_2.csv",
+        "source_row": 9
+      },
+      {
+        "issue": {
+          "code": "whitespace_trimmed",
+          "field": "name",
+          "message": "name had leading/trailing whitespace"
+        },
+        "key_fields": {
+          "location": "Warehouse B",
+          "name": "Mounting Bracket Large",
+          "sku": "SKU-010"
+        },
+        "snapshot": "snapshot_2",
+        "source_file": "data/snapshot_2.csv",
+        "source_row": 11
+      },
+      {
+        "issue": {
+          "code": "sku_format_normalized",
+          "field": "sku",
+          "message": "SKU missing hyphen was normalized"
+        },
+        "key_fields": {
+          "location": "Warehouse C",
+          "name": "Ethernet Cable Cat5",
+          "sku": "SKU-018"
+        },
+        "snapshot": "snapshot_2",
+        "source_file": "data/snapshot_2.csv",
+        "source_row": 19
+      },
+      {
+        "issue": {
+          "code": "whitespace_trimmed",
+          "field": "name",
+          "message": "name had leading/trailing whitespace"
+        },
+        "key_fields": {
+          "location": "Warehouse A",
+          "name": "HDMI Cable 3ft",
+          "sku": "SKU-021"
+        },
+        "snapshot": "snapshot_2",
+        "source_file": "data/snapshot_2.csv",
+        "source_row": 22
+      },
+      {
+        "issue": {
+          "code": "non_iso_date_format",
+          "field": "counted_on",
+          "message": "Date is not ISO-8601 format: 01/15/2024"
+        },
+        "key_fields": {
+          "location": "Warehouse C",
+          "name": "Cable Ties 100pk",
+          "sku": "SKU-035"
+        },
+        "snapshot": "snapshot_2",
+        "source_file": "data/snapshot_2.csv",
+        "source_row": 34
+      },
+      {
+        "issue": {
+          "code": "negative_quantity",
+          "field": "quantity",
+          "message": "Quantity is negative: -5"
+        },
+        "key_fields": {
+          "location": "Warehouse B",
+          "name": "Multimeter Pro",
+          "sku": "SKU-045"
+        },
+        "snapshot": "snapshot_2",
+        "source_file": "data/snapshot_2.csv",
+        "source_row": 54
+      }
+    ]
+  },
+  "metadata": {
+    "deterministic_merge_rule": "If multiple rows resolve to the same reconciliation key within a snapshot, their quantities are merged by deterministic addition.",
+    "generated_at_utc": "2026-02-19T02:17:34.943137+00:00",
+    "key_strategy": "sku_warehouse",
+    "snapshot_1_path": "data/snapshot_1.csv",
+    "snapshot_2_path": "data/snapshot_2.csv"
+  },
+  "reconciliation": {
+    "delta_by_key": {
+      "SKU-001|warehouse a": -5,
+      "SKU-002|warehouse a": -5,
+      "SKU-003|warehouse b": -15,
+      "SKU-004|warehouse a": -2,
+      "SKU-005|warehouse c": -20,
+      "SKU-008|warehouse a": -3,
+      "SKU-009|warehouse b": -25,
+      "SKU-010|warehouse b": -30,
+      "SKU-011|warehouse a": -5,
+      "SKU-012|warehouse a": -5,
+      "SKU-013|warehouse c": -150,
+      "SKU-014|warehouse b": -10,
+      "SKU-015|warehouse b": -5,
+      "SKU-016|warehouse a": -15,
+      "SKU-017|warehouse a": -7,
+      "SKU-018|warehouse c": -50,
+      "SKU-019|warehouse c": -20,
+      "SKU-020|warehouse c": -10,
+      "SKU-021|warehouse a": -25,
+      "SKU-022|warehouse a": -15,
+      "SKU-023|warehouse a": -10,
+      "SKU-024|warehouse a": -5,
+      "SKU-027|warehouse c": -25,
+      "SKU-028|warehouse c": -15,
+      "SKU-029|warehouse c": -5,
+      "SKU-030|warehouse a": -12,
+      "SKU-031|warehouse a": -8,
+      "SKU-032|warehouse b": -15,
+      "SKU-033|warehouse b": -8,
+      "SKU-034|warehouse a": -10,
+      "SKU-035|warehouse c": -80,
+      "SKU-036|warehouse c": -15,
+      "SKU-037|warehouse c": -35,
+      "SKU-038|warehouse a": -3,
+      "SKU-039|warehouse a": -15,
+      "SKU-040|warehouse b": -8,
+      "SKU-041|warehouse b": -5,
+      "SKU-042|warehouse b": -5,
+      "SKU-043|warehouse b": -2,
+      "SKU-044|warehouse a": -5,
+      "SKU-045|warehouse a": -2,
+      "SKU-046|warehouse b": -3,
+      "SKU-047|warehouse b": -20,
+      "SKU-048|warehouse c": -25,
+      "SKU-049|warehouse c": -40,
+      "SKU-050|warehouse a": -10,
+      "SKU-051|warehouse a": -2,
+      "SKU-052|warehouse c": -25,
+      "SKU-053|warehouse c": -10,
+      "SKU-054|warehouse c": -15,
+      "SKU-055|warehouse c": -15,
+      "SKU-056|warehouse c": -12,
+      "SKU-057|warehouse a": -3,
+      "SKU-058|warehouse a": -2,
+      "SKU-059|warehouse a": -5,
+      "SKU-060|warehouse a": -5,
+      "SKU-061|warehouse b": -5,
+      "SKU-062|warehouse b": -5,
+      "SKU-063|warehouse b": -8,
+      "SKU-064|warehouse a": -3,
+      "SKU-065|warehouse a": -2,
+      "SKU-066|warehouse a": -3,
+      "SKU-067|warehouse b": -3,
+      "SKU-068|warehouse b": -2,
+      "SKU-069|warehouse a": -2,
+      "SKU-070|warehouse a": -3,
+      "SKU-071|warehouse a": -2,
+      "SKU-072|warehouse a": -2,
+      "SKU-073|warehouse b": -5,
+      "SKU-074|warehouse b": -3,
+      "SKU-075|warehouse b": -2
+    },
+    "in_both_changed": [
+      {
+        "delta": -5,
+        "key": "SKU-001|warehouse a",
+        "snapshot_1_quantity": 150,
+        "snapshot_2_quantity": 145
+      },
+      {
+        "delta": -5,
+        "key": "SKU-002|warehouse a",
+        "snapshot_1_quantity": 75,
+        "snapshot_2_quantity": 70
+      },
+      {
+        "delta": -15,
+        "key": "SKU-003|warehouse b",
+        "snapshot_1_quantity": 200,
+        "snapshot_2_quantity": 185
+      },
+      {
+        "delta": -2,
+        "key": "SKU-004|warehouse a",
+        "snapshot_1_quantity": 50,
+        "snapshot_2_quantity": 48
+      },
+      {
+        "delta": -20,
+        "key": "SKU-005|warehouse c",
+        "snapshot_1_quantity": 500,
+        "snapshot_2_quantity": 480
+      },
+      {
+        "delta": -3,
+        "key": "SKU-008|warehouse a",
+        "snapshot_1_quantity": 45,
+        "snapshot_2_quantity": 42
+      },
+      {
+        "delta": -25,
+        "key": "SKU-009|warehouse b",
+        "snapshot_1_quantity": 1000,
+        "snapshot_2_quantity": 975
+      },
+      {
+        "delta": -30,
+        "key": "SKU-010|warehouse b",
+        "snapshot_1_quantity": 750,
+        "snapshot_2_quantity": 720
+      },
+      {
+        "delta": -5,
+        "key": "SKU-011|warehouse a",
+        "snapshot_1_quantity": 120,
+        "snapshot_2_quantity": 115
+      },
+      {
+        "delta": -5,
+        "key": "SKU-012|warehouse a",
+        "snapshot_1_quantity": 90,
+        "snapshot_2_quantity": 85
+      },
+      {
+        "delta": -150,
+        "key": "SKU-013|warehouse c",
+        "snapshot_1_quantity": 2000,
+        "snapshot_2_quantity": 1850
+      },
+      {
+        "delta": -10,
+        "key": "SKU-014|warehouse b",
+        "snapshot_1_quantity": 300,
+        "snapshot_2_quantity": 290
+      },
+      {
+        "delta": -5,
+        "key": "SKU-015|warehouse b",
+        "snapshot_1_quantity": 250,
+        "snapshot_2_quantity": 245
+      },
+      {
+        "delta": -15,
+        "key": "SKU-016|warehouse a",
+        "snapshot_1_quantity": 180,
+        "snapshot_2_quantity": 165
+      },
+      {
+        "delta": -7,
+        "key": "SKU-017|warehouse a",
+        "snapshot_1_quantity": 95,
+        "snapshot_2_quantity": 88
+      },
+      {
+        "delta": -50,
+        "key": "SKU-018|warehouse c",
+        "snapshot_1_quantity": 800,
+        "snapshot_2_quantity": 750
+      },
+      {
+        "delta": -20,
+        "key": "SKU-019|warehouse c",
+        "snapshot_1_quantity": 600,
+        "snapshot_2_quantity": 580
+      },
+      {
+        "delta": -10,
+        "key": "SKU-020|warehouse c",
+        "snapshot_1_quantity": 400,
+        "snapshot_2_quantity": 390
+      },
+      {
+        "delta": -25,
+        "key": "SKU-021|warehouse a",
+        "snapshot_1_quantity": 450,
+        "snapshot_2_quantity": 425
+      },
+      {
+        "delta": -15,
+        "key": "SKU-022|warehouse a",
+        "snapshot_1_quantity": 380,
+        "snapshot_2_quantity": 365
+      },
+      {
+        "delta": -10,
+        "key": "SKU-023|warehouse a",
+        "snapshot_1_quantity": 220,
+        "snapshot_2_quantity": 210
+      },
+      {
+        "delta": -5,
+        "key": "SKU-024|warehouse a",
+        "snapshot_1_quantity": 175,
+        "snapshot_2_quantity": 170
+      },
+      {
+        "delta": -25,
+        "key": "SKU-027|warehouse c",
+        "snapshot_1_quantity": 600,
+        "snapshot_2_quantity": 575
+      },
+      {
+        "delta": -15,
+        "key": "SKU-028|warehouse c",
+        "snapshot_1_quantity": 400,
+        "snapshot_2_quantity": 385
+      },
+      {
+        "delta": -5,
+        "key": "SKU-029|warehouse c",
+        "snapshot_1_quantity": 150,
+        "snapshot_2_quantity": 145
+      },
+      {
+        "delta": -12,
+        "key": "SKU-030|warehouse a",
+        "snapshot_1_quantity": 200,
+        "snapshot_2_quantity": 188
+      },
+      {
+        "delta": -8,
+        "key": "SKU-031|warehouse a",
+        "snapshot_1_quantity": 120,
+        "snapshot_2_quantity": 112
+      },
+      {
+        "delta": -15,
+        "key": "SKU-032|warehouse b",
+        "snapshot_1_quantity": 300,
+        "snapshot_2_quantity": 285
+      },
+      {
+        "delta": -8,
+        "key": "SKU-033|warehouse b",
+        "snapshot_1_quantity": 180,
+        "snapshot_2_quantity": 172
+      },
+      {
+        "delta": -10,
+        "key": "SKU-034|warehouse a",
+        "snapshot_1_quantity": 250,
+        "snapshot_2_quantity": 240
+      },
+      {
+        "delta": -80,
+        "key": "SKU-035|warehouse c",
+        "snapshot_1_quantity": 1500,
+        "snapshot_2_quantity": 1420
+      },
+      {
+        "delta": -15,
+        "key": "SKU-036|warehouse c",
+        "snapshot_1_quantity": 400,
+        "snapshot_2_quantity": 385
+      },
+      {
+        "delta": -35,
+        "key": "SKU-037|warehouse c",
+        "snapshot_1_quantity": 800,
+        "snapshot_2_quantity": 765
+      },
+      {
+        "delta": -3,
+        "key": "SKU-038|warehouse a",
+        "snapshot_1_quantity": 25,
+        "snapshot_2_quantity": 22
+      },
+      {
+        "delta": -15,
+        "key": "SKU-039|warehouse a",
+        "snapshot_1_quantity": 200,
+        "snapshot_2_quantity": 185
+      },
+      {
+        "delta": -8,
+        "key": "SKU-040|warehouse b",
+        "snapshot_1_quantity": 150,
+        "snapshot_2_quantity": 142
+      },
+      {
+        "delta": -5,
+        "key": "SKU-041|warehouse b",
+        "snapshot_1_quantity": 100,
+        "snapshot_2_quantity": 95
+      },
+      {
+        "delta": -5,
+        "key": "SKU-042|warehouse b",
+        "snapshot_1_quantity": 75,
+        "snapshot_2_quantity": 70
+      },
+      {
+        "delta": -2,
+        "key": "SKU-043|warehouse b",
+        "snapshot_1_quantity": 60,
+        "snapshot_2_quantity": 58
+      },
+      {
+        "delta": -5,
+        "key": "SKU-044|warehouse a",
+        "snapshot_1_quantity": 40,
+        "snapshot_2_quantity": 35
+      },
+      {
+        "delta": -2,
+        "key": "SKU-045|warehouse a",
+        "snapshot_1_quantity": 25,
+        "snapshot_2_quantity": 23
+      },
+      {
+        "delta": -3,
+        "key": "SKU-046|warehouse b",
+        "snapshot_1_quantity": 35,
+        "snapshot_2_quantity": 32
+      },
+      {
+        "delta": -20,
+        "key": "SKU-047|warehouse b",
+        "snapshot_1_quantity": 300,
+        "snapshot_2_quantity": 280
+      },
+      {
+        "delta": -25,
+        "key": "SKU-048|warehouse c",
+        "snapshot_1_quantity": 500,
+        "snapshot_2_quantity": 475
+      },
+      {
+        "delta": -40,
+        "key": "SKU-049|warehouse c",
+        "snapshot_1_quantity": 800,
+        "snapshot_2_quantity": 760
+      },
+      {
+        "delta": -10,
+        "key": "SKU-050|warehouse a",
+        "snapshot_1_quantity": 200,
+        "snapshot_2_quantity": 190
+      },
+      {
+        "delta": -2,
+        "key": "SKU-051|warehouse a",
+        "snapshot_1_quantity": 50,
+        "snapshot_2_quantity": 48
+      },
+      {
+        "delta": -25,
+        "key": "SKU-052|warehouse c",
+        "snapshot_1_quantity": 400,
+        "snapshot_2_quantity": 375
+      },
+      {
+        "delta": -10,
+        "key": "SKU-053|warehouse c",
+        "snapshot_1_quantity": 150,
+        "snapshot_2_quantity": 140
+      },
+      {
+        "delta": -15,
+        "key": "SKU-054|warehouse c",
+        "snapshot_1_quantity": 300,
+        "snapshot_2_quantity": 285
+      },
+      {
+        "delta": -15,
+        "key": "SKU-055|warehouse c",
+        "snapshot_1_quantity": 250,
+        "snapshot_2_quantity": 235
+      },
+      {
+        "delta": -12,
+        "key": "SKU-056|warehouse c",
+        "snapshot_1_quantity": 180,
+        "snapshot_2_quantity": 168
+      },
+      {
+        "delta": -3,
+        "key": "SKU-057|warehouse a",
+        "snapshot_1_quantity": 45,
+        "snapshot_2_quantity": 42
+      },
+      {
+        "delta": -2,
+        "key": "SKU-058|warehouse a",
+        "snapshot_1_quantity": 60,
+        "snapshot_2_quantity": 58
+      },
+      {
+        "delta": -5,
+        "key": "SKU-059|warehouse a",
+        "snapshot_1_quantity": 80,
+        "snapshot_2_quantity": 75
+      },
+      {
+        "delta": -5,
+        "key": "SKU-060|warehouse a",
+        "snapshot_1_quantity": 120,
+        "snapshot_2_quantity": 115
+      },
+      {
+        "delta": -5,
+        "key": "SKU-061|warehouse b",
+        "snapshot_1_quantity": 90,
+        "snapshot_2_quantity": 85
+      },
+      {
+        "delta": -5,
+        "key": "SKU-062|warehouse b",
+        "snapshot_1_quantity": 110,
+        "snapshot_2_quantity": 105
+      },
+      {
+        "delta": -8,
+        "key": "SKU-063|warehouse b",
+        "snapshot_1_quantity": 200,
+        "snapshot_2_quantity": 192
+      },
+      {
+        "delta": -3,
+        "key": "SKU-064|warehouse a",
+        "snapshot_1_quantity": 75,
+        "snapshot_2_quantity": 72
+      },
+      {
+        "delta": -2,
+        "key": "SKU-065|warehouse a",
+        "snapshot_1_quantity": 40,
+        "snapshot_2_quantity": 38
+      },
+      {
+        "delta": -3,
+        "key": "SKU-066|warehouse a",
+        "snapshot_1_quantity": 25,
+        "snapshot_2_quantity": 22
+      },
+      {
+        "delta": -3,
+        "key": "SKU-067|warehouse b",
+        "snapshot_1_quantity": 55,
+        "snapshot_2_quantity": 52
+      },
+      {
+        "delta": -2,
+        "key": "SKU-068|warehouse b",
+        "snapshot_1_quantity": 35,
+        "snapshot_2_quantity": 33
+      },
+      {
+        "delta": -2,
+        "key": "SKU-069|warehouse a",
+        "snapshot_1_quantity": 20,
+        "snapshot_2_quantity": 18
+      },
+      {
+        "delta": -3,
+        "key": "SKU-070|warehouse a",
+        "snapshot_1_quantity": 15,
+        "snapshot_2_quantity": 12
+      },
+      {
+        "delta": -2,
+        "key": "SKU-071|warehouse a",
+        "snapshot_1_quantity": 30,
+        "snapshot_2_quantity": 28
+      },
+      {
+        "delta": -2,
+        "key": "SKU-072|warehouse a",
+        "snapshot_1_quantity": 20,
+        "snapshot_2_quantity": 18
+      },
+      {
+        "delta": -5,
+        "key": "SKU-073|warehouse b",
+        "snapshot_1_quantity": 100,
+        "snapshot_2_quantity": 95
+      },
+      {
+        "delta": -3,
+        "key": "SKU-074|warehouse b",
+        "snapshot_1_quantity": 45,
+        "snapshot_2_quantity": 42
+      },
+      {
+        "delta": -2,
+        "key": "SKU-075|warehouse b",
+        "snapshot_1_quantity": 40,
+        "snapshot_2_quantity": 38
+      }
+    ],
+    "in_both_unchanged": [
+      "SKU-006|warehouse c",
+      "SKU-007|warehouse a"
+    ],
+    "only_in_snapshot_1": [
+      "SKU-025|warehouse b",
+      "SKU-026|warehouse b"
+    ],
+    "only_in_snapshot_2": [
+      "SKU-045|warehouse b",
+      "SKU-076|warehouse a",
+      "SKU-077|warehouse a",
+      "SKU-078|warehouse a",
+      "SKU-079|warehouse a",
+      "SKU-080|warehouse a"
+    ]
+  },
+  "summary": {
+    "in_both_changed_count": 71,
+    "in_both_unchanged_count": 2,
+    "only_in_snapshot_1_count": 2,
+    "only_in_snapshot_2_count": 6,
+    "snapshot_1_row_count": 75,
+    "snapshot_2_row_count": 79
+  }
+}
