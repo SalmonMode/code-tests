@@ -28,3 +28,8 @@
 - Add a short module-level docstring in each test file that explains what behavior area it covers.
 - Add concise docstrings on each test function describing what is being validated and why it matters.
 - When fixtures or input rows are non-obvious, include short inline comments for context.
+
+## Type Annotation Standard
+- Prefer explicit type annotations for new Python code and tests.
+- Annotate function signatures (parameters and return types) by default.
+- Use concrete typed structures (for example `TypedDict`, typed aliases, typed collections) instead of loose `dict[str, object]` when practical.
