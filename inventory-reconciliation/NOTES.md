@@ -41,3 +41,25 @@ Suspected issue:
 - After normalizing SKU formats, likely true inventory set changes are:
   - Only in snapshot 1: `SKU-025`, `SKU-026`
   - Only in snapshot 2: `SKU-076`, `SKU-077`, `SKU-078`, `SKU-079`, `SKU-080`
+
+### [Codex] Parser library scaffold completed
+- Added `inventory_parser` package to normalize both snapshot schemas into one canonical row model:
+  - `inventory-reconciliation/inventory_parser/models.py`
+  - `inventory-reconciliation/inventory_parser/normalize.py`
+  - `inventory-reconciliation/inventory_parser/parser.py`
+  - `inventory-reconciliation/inventory_parser/__init__.py`
+- Implemented `parse_snapshot(...)` and `parse_both_snapshots(...)` for unified parsing output.
+- Added row-level issue flags for:
+  - SKU normalization/format problems
+  - quantity problems (invalid, non-integral, negative, decimal formatting)
+  - whitespace trimming on text fields
+  - non-ISO or invalid date values
+- Added tests validating schema detection and normalization behavior:
+  - `inventory-reconciliation/tests/test_inventory_parser.py`
+- Test run status: `python3 -m unittest discover -s tests -v` passes (`4` tests).
+
+## User Notes
+
+Will now start by building library of tools to parse the two data sets into a unified structure. Having the agent set up the libraries and parsing systems using simple dataclasses, set up the python environment, and implement tests for the library code I'm having it write.
+
+I instructed it to define tests for the library utilities themselves irrespective of the actual data files so I can be sure they're working as I expect. It takes some modifications to get it verifying the right things, though, rather than just trying to get code coverage.
