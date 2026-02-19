@@ -38,3 +38,11 @@
 - Prefer explicit type annotations for new Python code and tests.
 - Annotate function signatures (parameters and return types) by default.
 - Use concrete typed structures (for example `TypedDict`, typed aliases, typed collections) instead of loose `dict[str, object]` when practical.
+
+## Code Documentation Standard
+- Document code professionally by default.
+- Add module docstrings for new modules and keep them focused on purpose and scope.
+- Add class docstrings for new classes describing role, key fields, and usage context.
+- Add function docstrings for public functions and any non-trivial internal helpers, including behavior, inputs, and return values.
+- Add concise inline comments where intent is not obvious from the code alone, especially around normalization rules, edge cases, and design tradeoffs.
+- Avoid redundant comments that only restate syntax; comments should explain why, not just what.
