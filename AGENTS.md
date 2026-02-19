@@ -14,7 +14,7 @@
   - `## User Notes` for user-authored content.
   - `## Codex Notes (AI-authored only)` for assistant-authored content.
 - Assistant entries must be appended with this header format:
-  - `### [Codex YYYY-MM-DD] <title>`
+  - `### [Codex] <title>`
 - Do not edit or rewrite user-authored notes unless explicitly asked.
 
 ## Data-Scan Expectations

@@ -3,7 +3,7 @@
 ## Ownership Convention
 - `## User Notes` is user-authored.
 - `## Codex Notes (AI-authored only)` is assistant-authored only.
-- Assistant entries are appended using `### [Codex YYYY-MM-DD] <title>`.
+- Assistant entries are appended using `### [Codex] <title>`.
 
 ## User Notes
 Starting off, I'm looking through the data sets by eye to find any trouble while having the AI agent do the same. I will have the AI agent place its findings in marked sections as I go.
@@ -19,7 +19,7 @@ Suspected issue:
 
 ## Codex Notes (AI-authored only)
 
-### [Codex 2026-02-19] Data sample scan: potential issues
+### [Codex] Data sample scan: potential issues
 - Schema drift between snapshots:
   - `snapshot_1.csv` headers: `sku,name,quantity,location,last_counted`
   - `snapshot_2.csv` headers: `sku,product_name,qty,warehouse,updated_at`
