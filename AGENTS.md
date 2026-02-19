@@ -29,6 +29,11 @@
 - Add concise docstrings on each test function describing what is being validated and why it matters.
 - When fixtures or input rows are non-obvious, include short inline comments for context.
 
+## Test Run And Failure Handling
+- After making code changes, always run the relevant test suite before reporting completion.
+- If tests fail, take reasonable steps to fix the failures and re-run tests.
+- If failure resolution is blocked or ambiguous, defer to the user with a concise summary of what failed, what was attempted, and where guidance is needed.
+
 ## Type Annotation Standard
 - Prefer explicit type annotations for new Python code and tests.
 - Annotate function signatures (parameters and return types) by default.
