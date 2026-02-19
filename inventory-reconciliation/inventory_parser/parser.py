@@ -1,3 +1,5 @@
+"""Schema-aware CSV parser for inventory snapshots."""
+
 from __future__ import annotations
 
 import csv
@@ -10,6 +12,8 @@ from .normalize import normalize_sku, normalize_text, parse_inventory_date, pars
 
 @dataclass(frozen=True, slots=True)
 class SchemaDefinition:
+    """Defines how an input schema maps to canonical row fields."""
+
     name: str
     fields: frozenset[str]
     column_map: dict[str, str]
@@ -42,12 +46,20 @@ _SCHEMAS = (
 
 
 def _normalize_header(header: str | None) -> str:
+    """Normalize header names so schema matching is resilient to formatting."""
+
     if header is None:
         return ""
     return header.strip().lower()
 
 
 def detect_schema(headers: list[str] | None) -> SchemaDefinition:
+    """Return the matching schema definition for a header row.
+
+    Matching is exact by normalized header set so unknown schema drift fails
+    fast instead of silently mis-mapping columns.
+    """
+
     if not headers:
         raise ValueError("CSV file has no header row")
 
@@ -61,6 +73,8 @@ def detect_schema(headers: list[str] | None) -> SchemaDefinition:
 
 
 def _is_blank_row(raw_row: dict[str | None, str | None], headers: list[str]) -> bool:
+    """Return True when all declared columns in a row are empty."""
+
     for header in headers:
         value = raw_row.get(header)
         if value is None:
@@ -77,6 +91,8 @@ def _to_row(
     source_file: Path,
     schema: SchemaDefinition,
 ) -> UnifiedInventoryRow:
+    """Convert one raw CSV row into a canonical row with issue metadata."""
+
     issues: list[DataIssue] = []
 
     sku_raw = raw_row.get(schema.column_map["sku"])
@@ -118,6 +134,8 @@ def _to_row(
 
 
 def parse_snapshot(csv_path: str | Path) -> ParseResult:
+    """Parse one snapshot CSV into canonical rows and file-level issues."""
+
     path = Path(csv_path)
     file_issues: list[DataIssue] = []
 
@@ -132,6 +150,7 @@ def parse_snapshot(csv_path: str | Path) -> ParseResult:
                 continue
 
             if None in raw_row:
+                # DictReader uses `None` for extra unnamed columns.
                 file_issues.append(
                     DataIssue(
                         code="row_has_extra_columns",
@@ -161,6 +180,8 @@ def parse_snapshot(csv_path: str | Path) -> ParseResult:
 
 
 def parse_both_snapshots(snapshot_1_path: str | Path, snapshot_2_path: str | Path) -> CombinedParseResult:
+    """Parse both snapshots and return them as one combined structure."""
+
     return CombinedParseResult(
         snapshot_1=parse_snapshot(snapshot_1_path),
         snapshot_2=parse_snapshot(snapshot_2_path),

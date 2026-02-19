@@ -73,3 +73,7 @@ I'm having the AI agent add tests to check my earlier mentioned concern that the
 - Parser checks passed for both schemas and expected row counts (`75`, `79`, `154` combined).
 - Normalization checks passed for malformed SKUs, decimal quantity formatting, negative quantities, and non-ISO dates.
 - Reconciliation finding: SKU-keyed and name-keyed outputs differ (for example, `multimeter professional` appears as added only under name-key matching).
+
+## User Notes
+
+I'm having the agent pull out the reconcilliation logic into a utility, and build tests so we can verify it directly without relying on the specific files. I'm also having it add documnentation to everything so it stays clean and understandable.

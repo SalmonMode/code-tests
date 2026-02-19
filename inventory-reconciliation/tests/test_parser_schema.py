@@ -1,10 +1,10 @@
-from __future__ import annotations
-
 """Schema-detection and parser edge-case tests.
 
 These tests target behavior that is easy to break when modifying header
 matching or CSV ingestion logic.
 """
+
+from __future__ import annotations
 
 import pytest
 
@@ -12,6 +12,8 @@ from inventory_parser.parser import detect_schema, parse_snapshot
 
 
 def _issue_codes(issues: list[object]) -> set[str]:
+    """Return just issue codes to keep assertions compact."""
+
     return {issue.code for issue in issues}
 
 

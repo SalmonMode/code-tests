@@ -1,3 +1,5 @@
+"""Field-level normalization helpers used by inventory parsing."""
+
 from __future__ import annotations
 
 import re
@@ -11,6 +13,8 @@ _SKU_NO_HYPHEN_RE = re.compile(r"^SKU\d{3}$")
 
 
 def normalize_text(value: str | None, *, field: str) -> tuple[str | None, list[DataIssue]]:
+    """Trim text, collapse empty values to None, and emit quality issues."""
+
     if value is None:
         return None, [DataIssue(code="missing_value", message=f"{field} is missing", field=field)]
 
@@ -34,6 +38,8 @@ def normalize_text(value: str | None, *, field: str) -> tuple[str | None, list[D
 
 
 def normalize_sku(value: str | None) -> tuple[str | None, list[DataIssue]]:
+    """Normalize SKU formatting to canonical `SKU-XXX` when possible."""
+
     cleaned, issues = normalize_text(value, field="sku")
     if cleaned is None:
         return None, issues
@@ -73,6 +79,8 @@ def normalize_sku(value: str | None) -> tuple[str | None, list[DataIssue]]:
 
 
 def parse_quantity(value: str | None) -> tuple[int | None, list[DataIssue]]:
+    """Parse quantity as int and emit issues for invalid or unusual formats."""
+
     cleaned, issues = normalize_text(value, field="quantity")
     if cleaned is None:
         return None, issues
@@ -121,6 +129,8 @@ def parse_quantity(value: str | None) -> tuple[int | None, list[DataIssue]]:
 
 
 def parse_inventory_date(value: str | None) -> tuple[date | None, list[DataIssue]]:
+    """Parse inventory date, accepting ISO and known legacy MM/DD/YYYY format."""
+
     cleaned, issues = normalize_text(value, field="counted_on")
     if cleaned is None:
         return None, issues
@@ -129,6 +139,7 @@ def parse_inventory_date(value: str | None) -> tuple[date | None, list[DataIssue
         try:
             parsed = datetime.strptime(cleaned, fmt).date()
             if fmt != "%Y-%m-%d":
+                # Legacy format is accepted for resilience but still flagged.
                 issues.append(
                     DataIssue(
                         code="non_iso_date_format",

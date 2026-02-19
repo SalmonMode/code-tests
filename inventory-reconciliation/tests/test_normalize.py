@@ -1,5 +1,3 @@
-from __future__ import annotations
-
 """Unit tests for field-level normalization helpers.
 
 These tests document the expected behavior of low-level parsing utilities used
@@ -7,12 +5,16 @@ by the CSV parser. Each case focuses on one rule so regressions are easy to
 diagnose.
 """
 
+from __future__ import annotations
+
 from datetime import date
 
 from inventory_parser.normalize import normalize_sku, normalize_text, parse_inventory_date, parse_quantity
 
 
 def _issue_codes(issues: list[object]) -> set[str]:
+    """Return just issue codes to keep assertions compact."""
+
     return {issue.code for issue in issues}
 
 

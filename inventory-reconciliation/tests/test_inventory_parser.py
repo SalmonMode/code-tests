@@ -1,11 +1,11 @@
-from __future__ import annotations
-
 """Behavior-focused tests for the inventory parsing layer.
 
 These tests intentionally check both "happy path" parsing and known data-quality
 anomalies in the provided snapshots. Together they document what the parser
 normalizes and what it flags as issues.
 """
+
+from __future__ import annotations
 
 from pathlib import Path
 

@@ -9,6 +9,7 @@ inventory snapshot formats into one canonical structure.
 - Normalizes each row into the same output model.
 - Preserves source metadata (`source_file`, `source_row`, `source_schema`).
 - Flags data-quality issues while parsing.
+- Provides reconciliation summaries with configurable key strategy (`sku` or `name`).
 
 ## Package Layout
 
@@ -18,6 +19,8 @@ inventory snapshot formats into one canonical structure.
   - Field-level normalization and validation helpers.
 - `inventory_parser/parser.py`
   - Schema detection and CSV parsing entry points.
+- `inventory_parser/reconcile.py`
+  - Reconciliation helpers for delta/category summaries.
 - `inventory_parser/__init__.py`
   - Public API exports.
 
@@ -28,6 +31,8 @@ from inventory_parser import (
     detect_schema,
     parse_snapshot,
     parse_both_snapshots,
+    reconcile_rows,
+    reconcile_combined_result,
     DataIssue,
     UnifiedInventoryRow,
     ParseResult,
@@ -61,6 +66,20 @@ Uses exact header-set matching after:
 - lowercasing header names
 
 If headers do not match a known schema, it raises `ValueError`.
+
+### `reconcile_rows(snapshot_1_rows, snapshot_2_rows, key="sku") -> ReconciliationSummary`
+
+Builds a summary with:
+
+- `only_in_snapshot_1`
+- `only_in_snapshot_2`
+- `delta_by_key` (`snapshot_2_total - snapshot_1_total`)
+
+`key` accepts `"sku"`, `"name"`, or a custom callable.
+
+### `reconcile_combined_result(combined_result, key="sku") -> ReconciliationSummary`
+
+Convenience wrapper around `reconcile_rows(...)` for a `CombinedParseResult`.
 
 ## Supported Input Schemas
 
