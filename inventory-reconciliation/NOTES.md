@@ -77,3 +77,7 @@ I'm having the AI agent add tests to check my earlier mentioned concern that the
 ## User Notes
 
 I'm having the agent pull out the reconcilliation logic into a utility, and build tests so we can verify it directly without relying on the specific files. I'm also having it add documnentation to everything so it stays clean and understandable.
+
+## User Notes
+
+Instructed the agent to have name/sku and warehouse be the key for increased granularity.

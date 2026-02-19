@@ -9,7 +9,7 @@ inventory snapshot formats into one canonical structure.
 - Normalizes each row into the same output model.
 - Preserves source metadata (`source_file`, `source_row`, `source_schema`).
 - Flags data-quality issues while parsing.
-- Provides reconciliation summaries with configurable key strategy (`sku` or `name`).
+- Provides reconciliation summaries with configurable key strategy.
 
 ## Package Layout
 
@@ -67,19 +67,26 @@ Uses exact header-set matching after:
 
 If headers do not match a known schema, it raises `ValueError`.
 
-### `reconcile_rows(snapshot_1_rows, snapshot_2_rows, key="sku") -> ReconciliationSummary`
+### `reconcile_rows(snapshot_1_rows, snapshot_2_rows, key="sku_warehouse") -> ReconciliationSummary`
 
 Builds a summary with:
 
+- `in_both_unchanged`
+- `in_both_changed` (with per-key quantities and deltas)
 - `only_in_snapshot_1`
 - `only_in_snapshot_2`
 - `delta_by_key` (`snapshot_2_total - snapshot_1_total`)
 
-`key` accepts `"sku"`, `"name"`, or a custom callable.
+`key` accepts `"sku_warehouse"` (default), `"name_warehouse"`, `"sku"`, `"name"`, or a custom callable.
 
-### `reconcile_combined_result(combined_result, key="sku") -> ReconciliationSummary`
+### `reconcile_combined_result(combined_result, key="sku_warehouse") -> ReconciliationSummary`
 
 Convenience wrapper around `reconcile_rows(...)` for a `CombinedParseResult`.
+
+### `detect_merged_duplicates(rows, key="sku_warehouse") -> list[DuplicateMergeInfo]`
+
+Returns keys that were merged from multiple rows by deterministic addition
+within a single snapshot.
 
 ## Supported Input Schemas
 
