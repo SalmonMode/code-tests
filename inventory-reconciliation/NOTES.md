@@ -63,3 +63,13 @@ Suspected issue:
 Will now start by building library of tools to parse the two data sets into a unified structure. Having the agent set up the libraries and parsing systems using simple dataclasses, set up the python environment, and implement tests for the library code I'm having it write.
 
 I instructed it to define tests for the library utilities themselves irrespective of the actual data files so I can be sure they're working as I expect. It takes some modifications to get it verifying the right things, though, rather than just trying to get code coverage.
+
+## User Notes
+
+I'm having the AI agent add tests to check my earlier mentioned concern that there may be a discrepency between using the name as the key and the SKU as the key. The agent will add its findings here.
+
+### [Codex] Latest pytest findings
+- Test run: `20` passed, `0` failed.
+- Parser checks passed for both schemas and expected row counts (`75`, `79`, `154` combined).
+- Normalization checks passed for malformed SKUs, decimal quantity formatting, negative quantities, and non-ISO dates.
+- Reconciliation finding: SKU-keyed and name-keyed outputs differ (for example, `multimeter professional` appears as added only under name-key matching).
