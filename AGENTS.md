@@ -15,6 +15,7 @@
   - `## Codex Notes (AI-authored only)` for assistant-authored content.
 - Assistant entries must be appended with this header format:
   - `### [Codex] <title>`
+- Always append new assistant notes to the very end of `inventory-reconciliation/NOTES.md`.
 - Do not edit or rewrite user-authored notes unless explicitly asked.
 
 ## Data-Scan Expectations
